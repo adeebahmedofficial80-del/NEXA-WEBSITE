@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#05070A">
+    <title>Nexa AI — Intelligence Around You</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ======================================================
+         LOADING OVERLAY
+         ====================================================== -->
+    <div class="loading-overlay" id="loadingOverlay" aria-label="Loading">
+        <div class="loading-overlay__content">
+            <div class="loading-logo">
+                <img src="assets/logo/nexa-logo-new.png" alt="Nexa AI" class="loading-logo__img">
+            </div>
+            <div class="loading-overlay__signal">
+                <div class="loading-signal__bar"></div>
+                <div class="loading-signal__bar"></div>
+                <div class="loading-signal__bar"></div>
+                <div class="loading-signal__bar"></div>
+                <div class="loading-signal__bar"></div>
+            </div>
+            <p class="loading-overlay__label">INITIALIZING EXPERIENCE</p>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         CANVAS — fixed fullscreen (Phase 1 preface)
+         ====================================================== -->
+    <canvas id="sequenceCanvas"></canvas>
+
+    <!-- ======================================================
+         SCROLL SPACER — provides scrollable height for Phase 1
+         ====================================================== -->
+    <section class="sequence-section">
+        <div class="sequence-scroll-space"></div>
+    </section>
+
+    <!-- ======================================================
+         PHASE 1 BRANDING — top-left
+         ====================================================== -->
+    <div class="nexa-brand" id="prefaceBrand">
+        <img src="assets/logo/nexa-logo-new.png" alt="Nexa AI Logo" class="nexa-brand__img">
+        <div class="nexa-brand__text">Nexa AI</div>
+    </div>
+
+    <!-- ======================================================
+         CONTROLS — bottom-right
+         ====================================================== -->
+    <div class="controls" id="prefaceControls">
+        <div class="controls__row">
+            <button class="controls__btn controls__speed" data-speed="0.5">0.5×</button>
+            <button class="controls__btn controls__speed" data-speed="1">1×</button>
+            <button class="controls__btn controls__speed" data-speed="1.5">1.5×</button>
+            <button class="controls__btn controls__speed" data-speed="2">2×</button>
+        </div>
+        <div class="controls__row">
+            <button class="controls__btn" id="btnAutoScroll">Auto Scroll</button>
+            <button class="controls__btn" id="btnRestart">Restart</button>
+            <button class="controls__btn" id="btnDebug">Debug</button>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         PROGRESS BAR — bottom strip
+         ====================================================== -->
+    <div class="progress-bar" id="prefaceProgress">
+        <div class="progress-bar__fill"></div>
+    </div>
+
+    <!-- ======================================================
+         DEBUG PANEL — top-right (hidden by default)
+         ====================================================== -->
+    <div class="debug-panel" id="prefaceDebug">
+        <div><span class="debug-panel__label">Global Frame:</span><span class="debug-panel__value" id="dbgGlobal">1</span></div>
+        <div><span class="debug-panel__label">Folder:</span><span class="debug-panel__value" id="dbgFolder">1</span></div>
+        <div><span class="debug-panel__label">Local Frame:</span><span class="debug-panel__value" id="dbgLocal">1</span></div>
+        <div><span class="debug-panel__label">Scroll:</span><span class="debug-panel__value" id="dbgProgress">0%</span></div>
+        <div><span class="debug-panel__label">Direction:</span><span class="debug-panel__value" id="dbgDirection">↓ Forward</span></div>
+        <div><span class="debug-panel__label">Loaded:</span><span class="debug-panel__value" id="dbgLoaded">No</span></div>
+        <div><span class="debug-panel__label">Canvas:</span><span class="debug-panel__value" id="dbgCanvas">0×0</span></div>
+        <div><span class="debug-panel__label">Cache Size:</span><span class="debug-panel__value" id="dbgCache">0</span></div>
+    </div>
+
+    <!-- ======================================================
+         PHASE 1 → PHASE 2 BRIDGE: DIVE IN CTA
+         ====================================================== -->
+    <div class="divein-container" id="diveInContainer">
+        <button class="divein-btn" id="btnDiveIn" type="button" aria-label="Dive In to Nexa AI">
+            <span class="divein-btn__text">DIVE IN</span>
+        </button>
+    </div>
+
+    <!-- ======================================================
+         PHASE 2 — OFFICIAL NEXA AI WEBSITE
+         ====================================================== -->
+    <div class="official-site" id="officialSite">
+
+        <!-- DIVE IN TRANSITION OVERLAY -->
+        <div class="dive-transition" id="diveTransition">
+            <div class="dive-transition__veil" id="diveVeil"></div>
+            <div class="dive-transition__logo" id="diveLogoZoom">
+                <img src="assets/logo/nexa-logo-new.png" alt="Nexa AI Logo" class="dive-transition__logo-img">
+            </div>
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav class="nx-nav" id="nexaNav" role="navigation" aria-label="Nexa AI main navigation">
+            <div class="nx-nav__inner">
+                <a href="#heroSection" class="nx-nav__logo" aria-label="Nexa AI Home">
+                    <img src="assets/logo/nexa-logo-new.png" alt="Nexa AI Logo" class="nx-nav__logo-img">
+                    <span class="nx-nav__logo-text">NEXA AI</span>
+                </a>
+                <div class="nx-nav__links" id="navLinks">
+                    <a href="#productSection" class="nx-nav__link">Product</a>
+                    <a href="#featureNetworkSection" class="nx-nav__link">Capabilities</a>
+                    <a href="#commandSection" class="nx-nav__link">Command</a>
+                    <a href="#intentActionSection" class="nx-nav__link">Process</a>
+                    <a href="#nexaHubSection" class="nx-nav__link">Ecosystem</a>
+                    <a href="#privacySection" class="nx-nav__link">Privacy</a>
+                    <a href="#tiersSection" class="nx-nav__link">Tiers</a>
+                </div>
+                <div class="nx-nav__right">
+                    <a href="#ctaSection" class="nx-nav__cta" id="navCtaBtn">Request Access</a>
+                    <button class="nx-nav__mobile-toggle" id="mobileMenuToggle" aria-label="Toggle menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div class="nx-nav__mobile-menu" id="mobileMenu" aria-hidden="true">
+                <a href="#productSection" class="nx-nav__mobile-link">Product</a>
+                <a href="#featureNetworkSection" class="nx-nav__mobile-link">Capabilities</a>
+                <a href="#commandSection" class="nx-nav__mobile-link">Command</a>
+                <a href="#intentActionSection" class="nx-nav__mobile-link">Process</a>
+                <a href="#nexaHubSection" class="nx-nav__mobile-link">Ecosystem</a>
+                <a href="#privacySection" class="nx-nav__mobile-link">Privacy</a>
+                <a href="#tiersSection" class="nx-nav__mobile-link">Tiers</a>
+                <a href="#ctaSection" class="nx-nav__mobile-link nx-nav__mobile-link--cta">Request Access</a>
+            </div>
+        </nav>
+
+        <!-- ================================================
+             SECTION 01: HERO
+             ================================================ -->
+        <section class="nx-section nx-hero" id="heroSection">
+            <div class="nx-hero__bg">
+                <canvas class="nx-hero__3d-canvas" id="hero3DCanvas" aria-hidden="true"></canvas>
+                <div class="nx-hero__particles" id="heroParticles"></div>
+                <div class="nx-hero__grid"></div>
+                <div class="nx-hero__ambient nx-hero__ambient--top"></div>
+                <div class="nx-hero__ambient nx-hero__ambient--center"></div>
+            </div>
+            <div class="nx-hero__content">
+                <div class="nx-hero__eyebrow" id="heroEyebrow">
+                    <span class="nx-status-dot"></span>
+                    <span>NEXA AI — PERSONAL INTELLIGENCE SYSTEM</span>
+                </div>
+                <h1 class="nx-hero__title" id="heroTitle">NEXA AI</h1>
+                <p class="nx-hero__statement" id="heroStatement">A MORE HUMAN INTELLIGENCE.</p>
+                <p class="nx-hero__copy" id="heroCopy">
+                    One intelligent system.<br>
+                    Connected to your world.<br>
+                    Designed to understand, assist and act.
+                </p>
+                <div class="nx-hero__actions" id="heroActions">
+                    <a href="#productSection" class="nx-btn nx-btn--primary" id="btnHeroExplore">EXPLORE THE DEVICE</a>
+                    <a href="#commandSection" class="nx-btn nx-btn--ghost" id="btnHeroSeeAction">SEE IT IN ACTION</a>
+                </div>
+            </div>
+            <div class="nx-hero__scroll-cue" id="heroScrollCue">
+                <span class="nx-hero__scroll-text">SCROLL</span>
+                <div class="nx-hero__scroll-line"><span></span></div>
+            </div>
+        </section>
+
+        <!-- ================================================
+             SECTION 02: 3D PRODUCT DISCOVERY
+             ================================================ -->
+        <section class="nx-section nx-product" id="productSection">
+            <div class="nx-product__header">
+                <span class="nx-label">02 // HARDWARE CRAFTSMANSHIP</span>
+                <h2 class="nx-section-title">Meet Nexa.</h2>
+                <p class="nx-section-lead">A physical intelligence object. Engineered with bespoke tactile materials, ambient acoustic architecture, and integrated quantum silicon.</p>
+            </div>
+            <div class="nx-product__display" id="productDisplay">
+                <img src="assets/device/ChatGPT Image Aug 12, 2026, 08_05_02 AM.png"
+                     alt="Nexa AI Physical Device"
+                     class="nx-product__img">
+            </div>
+        </section>
+
+        <!-- ================================================
+             SECTION 03: PRODUCT-CENTERED FEATURE NETWORK
+             (Central Nexa device + Core & Supporting Nodes + Life Pulse)
+             ================================================ -->
+        <section class="nx-section nx-network" id="featureNetworkSection">
+            <div class="nx-network__header">
+                <span class="nx-label">03 // LIVING INTELLIGENCE SYSTEM</span>
+                <h2 class="nx-section-title">The Nexa Capability Constellation.</h2>
+                <p class="nx-section-lead">Nexa is the central intelligence. Features radiate through animated neural threads. Click any node to trigger the Nexa life pulse.</p>
+            </div>
+
+            <div class="nx-network__stage" id="networkStage">
+                <!-- SVG Neural Thread Layer -->
+                <svg class="nx-network__svg" id="networkSvg" viewBox="0 0 1000 700" preserveAspectRatio="none">
+                    <!-- Segmented technological threads & pulses rendered dynamically via JS -->
+                </svg>
+
+                <!-- Central Nexa Intelligence Node -->
+                <div class="nx-network__center" id="networkCenterNode">
+                    <div class="nx-network__center-halo"></div>
+                    <div class="nx-network__center-core">
+                        <img src="assets/device/ChatGPT Image Aug 12, 2026, 08_05_02 AM.png" alt="Nexa Central Core" class="nx-network__center-img">
+                        <div class="nx-network__pulse-emitter" id="pulseEmitter"></div>
+                    </div>
+                    <span class="nx-network__center-tag">NEXA CORE</span>
+                </div>
+
+                <!-- Feature Nodes Container (Positioned radially around Nexa) -->
+                <div class="nx-network__nodes" id="networkNodesContainer">
+                    <!-- Nodes injected dynamically with clean minimal SVG icons -->
+                </div>
+            </div>
+
+            <div class="nx-network__hint">
+                <span class="nx-network__hint-dot"></span>
+                <span>Select any capability to route an intelligence signal from Nexa</span>
+            </div>
+        </section>
+
+        <!-- ================================================
+             SECTION 04: COMMAND EXPERIENCE (Room Demonstration)
+             ================================================ -->
+        <section class="nx-section nx-command" id="commandSection">
+            <div class="nx-command__header">
+                <span class="nx-label">04 // COMMAND DEMONSTRATION</span>
+                <h2 class="nx-section-title">Give Nexa the Command.</h2>
+                <p class="nx-section-lead">Watch intention translate directly into physical action across connected environments.</p>
+            </div>
+            <div class="nx-command__stage">
+                <!-- Video Player -->
+                <div class="nx-command__player-wrap">
+                    <div class="nx-video-player" id="nexaVideoPlayer">
+                        <video
+                            id="nexaVideo"
+                            class="nx-video"
+                            playsinline
+                            preload="metadata"
+                            aria-label="Nexa AI Room Demonstration"
+                        ></video>
+                        <div class="nx-video__overlay" id="videoOverlay">
+                            <div class="nx-video__overlay-content">
+                                <div class="nx-video__play-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                                        <polygon points="5 3 19 12 5 21 5 3"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Right-side Reset Icon Button -->
+                        <button class="nx-video-reset" id="videoResetBtn" title="Reset demonstration" aria-label="Reset to beginning">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <polyline points="1 4 1 10 7 10"/>
+                                <path d="M3.51 15a9 9 0 1 0 .49-4.65"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Command area -->
+                <div class="nx-command__controls">
+                    <div class="nx-command__text-wrap">
+                        <p class="nx-command__text" id="commandText">&ldquo;Nexa, wake up.&rdquo;</p>
+                    </div>
+                    <button class="nx-command-btn" id="commandBtn" type="button" aria-label="Execute command">
+                        <span class="nx-command-btn__glow"></span>
+                        <span class="nx-command-btn__label">COMMAND</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================
+             SECTION 05: INTENT → ACTION
+             (Scroll-based 6-Stage Process)
+             ================================================ -->
+        <section class="nx-section nx-intent" id="intentActionSection">
+            <div class="nx-intent__header">
+                <span class="nx-label">05 // COGNITIVE PIPELINE</span>
+                <h2 class="nx-section-title">From Intent to Action.</h2>
+                <p class="nx-section-lead">How Nexa processes natural speech and commands into physical execution in under 400 milliseconds.</p>
+            </div>
+            <div class="nx-intent__pipeline" id="intentPipeline">
+                <div class="nx-intent__track">
+                    <div class="nx-intent__line-bg"></div>
+                    <div class="nx-intent__line-fill" id="intentLineFill"></div>
+                </div>
+
+                <!-- Stage 01 -->
+                <div class="nx-intent-step" data-step="0">
+                    <div class="nx-intent-step__marker">
+                        <span class="nx-intent-step__num">01</span>
+                    </div>
+                    <div class="nx-intent-step__card">
+                        <span class="nx-intent-step__tag">INTENT</span>
+                        <h3 class="nx-intent-step__title">User Speaks</h3>
+                        <p class="nx-intent-step__desc">A natural spoken instruction or ambient intent enters Nexa's multi-microphone acoustic array.</p>
+                    </div>
+                </div>
+
+                <!-- Stage 02 -->
+                <div class="nx-intent-step" data-step="1">
+                    <div class="nx-intent-step__marker">
+                        <span class="nx-intent-step__num">02</span>
+                    </div>
+                    <div class="nx-intent-step__card">
+                        <span class="nx-intent-step__tag">PERCEPTION</span>
+                        <h3 class="nx-intent-step__title">Nexa Understands</h3>
+                        <p class="nx-intent-step__desc">Acoustics, spatial presence, user identity, and environmental signals are fused into a clean cognitive stream.</p>
+                    </div>
+                </div>
+
+                <!-- Stage 03 -->
+                <div class="nx-intent-step" data-step="2">
+                    <div class="nx-intent-step__marker">
+                        <span class="nx-intent-step__num">03</span>
+                    </div>
+                    <div class="nx-intent-step__card">
+                        <span class="nx-intent-step__tag">REASONING</span>
+                        <h3 class="nx-intent-step__title">Nexa Thinks</h3>
+                        <p class="nx-intent-step__desc">Hybrid localized tensor silicon reasons through context, personal routines, and security constraints.</p>
+                    </div>
+                </div>
+
+                <!-- Stage 04 -->
+                <div class="nx-intent-step" data-step="3">
+                    <div class="nx-intent-step__marker">
+                        <span class="nx-intent-step__num">04</span>
+                    </div>
+                    <div class="nx-intent-step__card">
+                        <span class="nx-intent-step__tag">DECISION</span>
+                        <h3 class="nx-intent-step__title">Intelligence Decides</h3>
+                        <p class="nx-intent-step__desc">The optimal action sequence is chosen across smart devices, connected services, or voice response.</p>
+                    </div>
+                </div>
+
+                <!-- Stage 05 -->
+                <div class="nx-intent-step" data-step="4">
+                    <div class="nx-intent-step__marker">
+                        <span class="nx-intent-step__num">05</span>
+                    </div>
+                    <div class="nx-intent-step__card">
+                        <span class="nx-intent-step__tag">ACTION</span>
+                        <h3 class="nx-intent-step__title">Nexa Acts</h3>
+                        <p class="nx-intent-step__desc">Physical hardware commands fire instantaneously — lights adjust, displays activate, climate responds.</p>
+                    </div>
+                </div>
+
+                <!-- Stage 06 -->
+                <div class="nx-intent-step" data-step="5">
+                    <div class="nx-intent-step__marker">
+                        <span class="nx-intent-step__num">06</span>
+                    </div>
+                    <div class="nx-intent-step__card">
+                        <span class="nx-intent-step__tag">FEEDBACK</span>
+                        <h3 class="nx-intent-step__title">Environment Responds</h3>
+                        <p class="nx-intent-step__desc">Subtle edge-light confirmation signals completion as the space synchronizes with your requested intent.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================
+             SECTION 06: ARCHITECTURE
+             ================================================ -->
+        <section class="nx-section nx-architecture" id="architectureSection">
+            <div class="nx-architecture__inner">
+                <div class="nx-architecture__header">
+                    <span class="nx-label">06 // ZERO-LATENCY NEURAL CORE</span>
+                    <h2 class="nx-section-title">Hardware Engineered for Silicon Sovereignty.</h2>
+                    <p class="nx-section-lead">A unified pipeline of edge inference, dedicated tensor processing units, and high-bandwidth environmental buses.</p>
+                </div>
+                <div class="nx-arch-grid">
+                    <div class="nx-arch-card">
+                        <div class="nx-arch-card__num">01</div>
+                        <h3 class="nx-arch-card__title">Direct Sensory Ingestion</h3>
+                        <p class="nx-arch-card__desc">Dedicated spatial acoustic DSP ingests directional audio at 96kHz with hardware beamforming and zero background echo.</p>
+                    </div>
+                    <div class="nx-arch-card">
+                        <div class="nx-arch-card__num">02</div>
+                        <h3 class="nx-arch-card__title">Quantum Silicon Tensor Engine</h3>
+                        <p class="nx-arch-card__desc">Billion-parameter quantized neural weights execute localized sub-millisecond inference entirely without external cloud lag.</p>
+                    </div>
+                    <div class="nx-arch-card">
+                        <div class="nx-arch-card__num">03</div>
+                        <h3 class="nx-arch-card__title">Universal Device Bus</h3>
+                        <p class="nx-arch-card__desc">Matter, Zigbee, Wi-Fi 6E, Bluetooth 5.4, and infrared unified under an autonomous orchestration matrix.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================
+             SECTION 07: USE CASES
+             ================================================ -->
+        <section class="nx-section nx-usecases" id="usecaseSection">
+            <div class="nx-usecases__header">
+                <span class="nx-label">07 // REAL-WORLD APPLICATIONS</span>
+                <h2 class="nx-section-title">Designed for Every Moment.</h2>
+                <p class="nx-section-lead">From morning routine orchestration to deep late-night focus sessions.</p>
+            </div>
+            <div class="nx-usecases__grid">
+                <div class="nx-usecase" data-context="home">
+                    <div class="nx-usecase__tag">HOME & LIVING</div>
+                    <h3 class="nx-usecase__title">Atmospheric Room Orchestration</h3>
+                    <p class="nx-usecase__desc">Single commands calibrate whole-room lighting, curtains, climate, and soundscapes smoothly without app-switching.</p>
+                </div>
+                <div class="nx-usecase" data-context="work">
+                    <div class="nx-usecase__tag">EXECUTIVE WORK</div>
+                    <h3 class="nx-usecase__title">Meeting Synthesis & Task Routing</h3>
+                    <p class="nx-usecase__desc">Smart Audio Memory captures key takeaways, synthesizes action items, and syncs directly into your project workspaces.</p>
+                </div>
+                <div class="nx-usecase" data-context="study">
+                    <div class="nx-usecase__tag">LEARNING & RESEARCH</div>
+                    <h3 class="nx-usecase__title">Adaptive Cognitive Tutor</h3>
+                    <p class="nx-usecase__desc">Engage in continuous Socratic dialogue, debug complex logic, and retain longitudinal study progress across months.</p>
+                </div>
+                <div class="nx-usecase" data-context="creative">
+                    <div class="nx-usecase__tag">CREATIVE LABS</div>
+                    <h3 class="nx-usecase__title">Generative Co-Pilot</h3>
+                    <p class="nx-usecase__desc">Brainstorm concepts, explore voice scripts, and refine design briefs with an intelligence that respects your creative tone.</p>
+                </div>
+                <div class="nx-usecase" data-context="entertainment">
+                    <div class="nx-usecase__tag">CINEMA & AUDIO</div>
+                    <h3 class="nx-usecase__title">Immersive Spatial Media</h3>
+                    <p class="nx-usecase__desc">Activate Cinema Mode to dim ambient light, calibrate display levels, and route low-latency spatial audio to earbuds.</p>
+                </div>
+                <div class="nx-usecase" data-context="productivity">
+                    <div class="nx-usecase__tag">PERSISTENT KNOWLEDGE</div>
+                    <h3 class="nx-usecase__title">Your Sovereign Second Brain</h3>
+                    <p class="nx-usecase__desc">Never lose an insight. Audio discussions and thoughts are indexed privately on-device for instantaneous context recall.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================
+             SECTION 08: NEXA HUB (Ecosystem Layer)
+             ================================================ -->
+        <section class="nx-section nx-hub" id="nexaHubSection">
+            <div class="nx-hub__inner">
+                <div class="nx-hub__header">
+                    <span class="nx-label">08 // ECOSYSTEM COMMAND LAYER</span>
+                    <h2 class="nx-section-title">Nexa Hub. The Unified Ecosystem.</h2>
+                    <p class="nx-section-lead">The central environment that interconnects your physical Nexa devices, autonomous AI models, custom voice profiles, and third-party smart hardware.</p>
+                </div>
+                <div class="nx-hub__features">
+                    <div class="nx-hub-item">
+                        <div class="nx-hub-item__icon">⋈</div>
+                        <h4 class="nx-hub-item__title">Fleet & Device Orchestration</h4>
+                        <p class="nx-hub-item__desc">Manage multiple Nexa devices across rooms and workspaces with synchronized context.</p>
+                    </div>
+                    <div class="nx-hub-item">
+                        <div class="nx-hub-item__icon">◈</div>
+                        <h4 class="nx-hub-item__title">Custom Voice & Character Lab</h4>
+                        <p class="nx-hub-item__desc">Design, tune, and test specialized personality roles and speech dynamics.</p>
+                    </div>
+                    <div class="nx-hub-item">
+                        <div class="nx-hub-item__icon">⚙</div>
+                        <h4 class="nx-hub-item__title">Multi-Step Automation Mesh</h4>
+                        <p class="nx-hub-item__desc">Build event-driven triggers linking APIs, spatial sensors, and environmental actuators.</p>
+                    </div>
+                    <div class="nx-hub-item">
+                        <div class="nx-hub-item__icon">☵</div>
+                        <h4 class="nx-hub-item__title">Memory Enclave Management</h4>
+                        <p class="nx-hub-item__desc">Inspect, export, or securely purge audio transcriptions and associative memory indexes.</p>
+                    </div>
+                </div>
+
+                <!-- Prominent Nexa Hub CTA Button -->
+                <div class="nx-hub__cta-box">
+                    <p class="nx-hub__cta-sub">Enter the connected workspace for your Nexa AI ecosystem.</p>
+                    <a href="https://nexa-the-future-ai-hub.ai.studio" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="nx-btn nx-btn--hub" 
+                       id="btnExploreHub"
+                       aria-label="Explore Nexa Hub (opens in a new tab)">
+                        <span class="nx-btn__hub-glow"></span>
+                        <span class="nx-btn__hub-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                            </svg>
+                        </span>
+                        <span class="nx-btn__hub-label">EXPLORE NEXA HUB</span>
+                        <svg class="nx-btn__hub-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================
+             SECTION 09: PRIVACY BY DESIGN (Separate Trust Layer)
+             ================================================ -->
+        <section class="nx-section nx-privacy" id="privacySection">
+            <div class="nx-privacy__inner">
+                <div class="nx-privacy__header">
+                    <span class="nx-label">09 // SOVEREIGN TRUST LAYER</span>
+                    <h2 class="nx-section-title">Privacy is the Foundation. Not a Toggle.</h2>
+                    <p class="nx-section-lead">Your voice, personal memory, and daily habits belong strictly to you. Nexa is engineered with hardware-enforced boundaries that keep personal data sovereign.</p>
+                </div>
+                <div class="nx-privacy__grid">
+                    <div class="nx-privacy-card">
+                        <div class="nx-privacy-card__badge">HARDWARE ISOLATION</div>
+                        <h3 class="nx-privacy-card__title">On-Device Processing</h3>
+                        <p class="nx-privacy-card__desc">Core wake-word detection, local memory indexing, and edge inferences run locally inside an encrypted hardware security enclave.</p>
+                    </div>
+                    <div class="nx-privacy-card">
+                        <div class="nx-privacy-card__badge">SOVEREIGN OWNERSHIP</div>
+                        <h3 class="nx-privacy-card__title">Zero Data Brokerage</h3>
+                        <p class="nx-privacy-card__desc">Nexa does not monetize telemetry or sell user training pairs. Your personal conversations are never shared with advertising networks.</p>
+                    </div>
+                    <div class="nx-privacy-card">
+                        <div class="nx-privacy-card__badge">PHYSICAL CONTROL</div>
+                        <h3 class="nx-privacy-card__title">Hardware Disconnect</h3>
+                        <p class="nx-privacy-card__desc">A physical electronic isolation switch electrically cuts microphone and sensor power, providing absolute verifiable privacy.</p>
+                    </div>
+                </div>
+
+                <!-- Dedicated Privacy Policy CTA -->
+                <div class="nx-privacy__cta-wrap">
+                    <a href="privacy.html" class="nx-btn nx-btn--ghost" id="btnReadPrivacyPolicy">
+                        <span>Read Full Privacy Policy</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:6px;">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================
+             SECTION 10: PRODUCT TIERS
+             ================================================ -->
+        <section class="nx-section nx-tiers" id="tiersSection">
+            <div class="nx-tiers__header">
+                <span class="nx-label">10 // EDITIONS & CONFIGURATIONS</span>
+                <h2 class="nx-section-title">Choose Your Nexa.</h2>
+                <p class="nx-section-lead">Three distinct tiers of personal intelligence, crafted for different lifestyle demands.</p>
+                <div class="nx-tiers__disclaimer-box">
+                    <span class="nx-tiers__disclaimer-label">PROPOSED TARGET PRICING — INDIA</span>
+                    <p class="nx-tiers__disclaimer-text">Indicative pricing; final pricing subject to engineering, BOM, manufacturing, channel and market validation.</p>
+                </div>
+            </div>
+            <div class="nx-tiers__grid">
+                <!-- NEXA GO -->
+                <div class="nx-tier" data-tier="go">
+                    <div class="nx-tier__header">
+                        <span class="nx-tier__badge" style="--tier-color:#00E5FF">GO</span>
+                        <div class="nx-tier__identity">
+                            <h3 class="nx-tier__name">Nexa Go</h3>
+                            <p class="nx-tier__positioning">Entry / Essential AI</p>
+                        </div>
+                    </div>
+                    <div class="nx-tier__price">
+                        <span class="nx-tier__currency">₹</span>
+                        <span class="nx-tier__amount">3,499</span>
+                    </div>
+                    <ul class="nx-tier__features">
+                        <li>Cloud AI intelligence</li>
+                        <li>Basic smart home control</li>
+                        <li>Default voice experience</li>
+                        <li>Wi-Fi connectivity</li>
+                        <li>App integrations</li>
+                        <li class="nx-tier__feature--muted">Requires active internet connection</li>
+                    </ul>
+                    <div class="nx-tier__accent" style="background:rgba(0,229,255,0.06); border-color:rgba(0,229,255,0.22)"></div>
+                </div>
+
+                <!-- NEXA PLUS -->
+                <div class="nx-tier nx-tier--featured" data-tier="plus">
+                    <div class="nx-tier__header">
+                        <span class="nx-tier__badge" style="--tier-color:#8B5CF6">PLUS</span>
+                        <div class="nx-tier__identity">
+                            <h3 class="nx-tier__name">Nexa Plus</h3>
+                            <p class="nx-tier__positioning">Smart Companion</p>
+                        </div>
+                    </div>
+                    <div class="nx-tier__price">
+                        <span class="nx-tier__currency">₹</span>
+                        <span class="nx-tier__amount">7,999</span>
+                    </div>
+                    <ul class="nx-tier__features">
+                        <li>Hybrid AI (Cloud + On-Device)</li>
+                        <li>Multiple voice personalities</li>
+                        <li>Character personalisation modes</li>
+                        <li>Smart Audio Memory Mode</li>
+                        <li>Bluetooth earphone mode</li>
+                        <li>Smart home + routine automation</li>
+                        <li>Wi-Fi + optional 4G hotspot</li>
+                        <li>Deeper cross-app integrations</li>
+                    </ul>
+                    <div class="nx-tier__accent" style="background:rgba(139,92,246,0.06); border-color:rgba(139,92,246,0.3)"></div>
+                </div>
+
+                <!-- NEXA PRIME -->
+                <div class="nx-tier" data-tier="prime">
+                    <div class="nx-tier__header">
+                        <span class="nx-tier__badge" style="--tier-color:#F5B94C">PRIME</span>
+                        <div class="nx-tier__identity">
+                            <h3 class="nx-tier__name">Nexa Prime</h3>
+                            <p class="nx-tier__positioning">Premium AI Companion</p>
+                        </div>
+                    </div>
+                    <div class="nx-tier__price">
+                        <span class="nx-tier__currency">₹</span>
+                        <span class="nx-tier__amount">15,999</span>
+                    </div>
+                    <ul class="nx-tier__features">
+                        <li>Full autonomous hybrid AI system</li>
+                        <li>High-power on-device tensor silicon</li>
+                        <li>Emotion-reactive edge lighting</li>
+                        <li>Complete voice personalization suite</li>
+                        <li>Full character persona library</li>
+                        <li>Advanced Smart Audio Memory & Recall</li>
+                        <li>Universal Device Control orchestration</li>
+                        <li>Built-in broadband hotspot capability</li>
+                        <li>Full Nexa Hub ecosystem integration</li>
+                    </ul>
+                    <div class="nx-tier__accent" style="background:rgba(245,185,76,0.04); border-color:rgba(245,185,76,0.22)"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================
+             SECTION 11: VISION
+             ================================================ -->
+        <section class="nx-section nx-vision" id="visionSection">
+            <div class="nx-vision__inner">
+                <span class="nx-label">11 // FOUNDATIONAL PRINCIPLES</span>
+                <h2 class="nx-section-title">The Intelligence<br>Around You.</h2>
+                <div class="nx-vision__statements">
+                    <div class="nx-vision__statement">
+                        <span class="nx-vision__num">01</span>
+                        <p>AI that understands your context — not just your words.</p>
+                    </div>
+                    <div class="nx-vision__statement">
+                        <span class="nx-vision__num">02</span>
+                        <p>AI that acts in your physical environment — not just on a screen.</p>
+                    </div>
+                    <div class="nx-vision__statement">
+                        <span class="nx-vision__num">03</span>
+                        <p>AI that belongs to you — private, personal, sovereign.</p>
+                    </div>
+                    <div class="nx-vision__statement">
+                        <span class="nx-vision__num">04</span>
+                        <p>AI that grows with you — learning who you are, not what you buy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================
+             SECTION 12: FOUNDER / SILICON LABS
+             ================================================ -->
+        <section class="nx-section nx-company" id="companySection">
+            <div class="nx-company__inner">
+                <span class="nx-label">12 // CRAFTSMANSHIP & RESEARCH</span>
+                <h2 class="nx-section-title">Frontier Silicon. Human Purpose.</h2>
+                <p class="nx-section-lead">Nexa is designed by a collective of silicon architects, audio engineers, and human-interface designers dedicated to elevating everyday existence.</p>
+                <div class="nx-company__stats">
+                    <div class="nx-company__stat">
+                        <div class="nx-company__stat-val">&lt; 0.4ms</div>
+                        <div class="nx-company__stat-label">Neural Edge Latency</div>
+                    </div>
+                    <div class="nx-company__stat">
+                        <div class="nx-company__stat-val">100%</div>
+                        <div class="nx-company__stat-label">Sovereign Hardware Enclave</div>
+                    </div>
+                    <div class="nx-company__stat">
+                        <div class="nx-company__stat-val">Zero</div>
+                        <div class="nx-company__stat-label">Cloud Dependency (Local Mode)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================
+             SECTION 13: FINAL CTA
+             ================================================ -->
+        <section class="nx-section nx-cta" id="ctaSection">
+            <div class="nx-cta__inner">
+                <span class="nx-label">NEXA AI</span>
+                <h2 class="nx-cta__headline">Step into a more<br>human intelligence.</h2>
+                <p class="nx-cta__sub">The experience begins with one command.</p>
+                <div class="nx-cta__actions">
+                    <button class="nx-btn nx-btn--primary nx-btn--large" type="button" id="ctaRequestBtn">
+                        REQUEST EARLY ACCESS
+                    </button>
+                    <button class="nx-btn nx-btn--ghost nx-btn--large" type="button" id="ctaReplayBtn">
+                        REPLAY CINEMATIC PREFACE
+                    </button>
+                </div>
+                <div class="nx-cta__ambient"></div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="nx-footer">
+            <div class="nx-footer__inner">
+                <div class="nx-footer__brand">
+                    <img src="assets/logo/nexa-logo-new.png" alt="Nexa AI Logo" class="nx-footer__logo">
+                    <span class="nx-footer__brand-text">NEXA AI</span>
+                    <span class="nx-footer__sep">|</span>
+                    <span class="nx-footer__tagline">Intelligence Around You</span>
+                </div>
+                <nav class="nx-footer__nav" aria-label="Footer navigation">
+                    <a href="#productSection">Product</a>
+                    <a href="#featureNetworkSection">Capabilities</a>
+                    <a href="#commandSection">Command</a>
+                    <a href="#nexaHubSection">Ecosystem</a>
+                    <a href="https://nexa-the-future-ai-hub.ai.studio" target="_blank" rel="noopener noreferrer" class="nx-footer__link--hub">Nexa Hub ↗</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms &amp; Conditions</a>
+                </nav>
+                <div class="nx-footer__legal">
+                    <span>&copy; 2026 Nexa AI Inc. All rights reserved.</span>
+                    <span class="nx-footer__status">
+                        <span class="nx-status-dot nx-status-dot--sm"></span>
+                        System Operational
+                    </span>
+                </div>
+            </div>
+        </footer>
+
+        <!-- ================================================
+             REQUEST ACCESS MODAL DIALOG
+             ================================================ -->
+        <div class="nx-modal" id="requestAccessModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+            <div class="nx-modal__backdrop" id="modalBackdrop"></div>
+            <div class="nx-modal__panel">
+                <button class="nx-modal__close" id="modalCloseBtn" aria-label="Close dialog">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <div class="nx-modal__header">
+                    <div class="nx-label" style="margin-bottom:8px;">EARLY ACCESS INVITATION</div>
+                    <h3 class="nx-modal__title" id="modalTitle">Request Early Access to Nexa AI</h3>
+                    <p class="nx-modal__sub">Reserve your production hardware allocation and receive preview access to the Nexa Hub workspace.</p>
+                </div>
+
+                <form class="nx-modal__form" id="requestAccessForm" novalidate>
+                    <!-- Anti-bot honeypot field -->
+                    <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+                        <label for="company_website_input">Leave blank</label>
+                        <input type="text" id="company_website_input" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <!-- Anti-bot submission timestamp -->
+                    <input type="hidden" id="formRenderTime" name="renderTime" value="">
+
+                    <div class="nx-form-group">
+                        <label for="reqName" class="nx-form-label">Full Name <span class="nx-req">*</span></label>
+                        <input type="text" id="reqName" name="name" class="nx-form-input" placeholder="e.g. Maya Chen" required autocomplete="name" maxlength="80">
+                    </div>
+
+                    <div class="nx-form-group">
+                        <label for="reqEmail" class="nx-form-label">Work / Personal Email <span class="nx-req">*</span></label>
+                        <input type="email" id="reqEmail" name="email" class="nx-form-input" placeholder="name@domain.com" required autocomplete="email" maxlength="120">
+                    </div>
+
+                    <div class="nx-form-row">
+                        <div class="nx-form-group">
+                            <label for="reqTier" class="nx-form-label">Desired Tier</label>
+                            <select id="reqTier" name="tier" class="nx-form-select">
+                                <option value="Nexa Plus">Nexa Plus (₹7,999) — Smart Hybrid</option>
+                                <option value="Nexa Prime">Nexa Prime (₹15,999) — Full Companion</option>
+                                <option value="Nexa Go">Nexa Go (₹3,499) — Entry AI</option>
+                            </select>
+                        </div>
+                        <div class="nx-form-group">
+                            <label for="reqUseCase" class="nx-form-label">Primary Application</label>
+                            <select id="reqUseCase" name="useCase" class="nx-form-select">
+                                <option value="Executive / Productivity">Executive / Meeting Memory</option>
+                                <option value="Smart Home / IoT">Smart Home &amp; Automation</option>
+                                <option value="Developer / AI Research">Developer / API Workflows</option>
+                                <option value="Creative / Collaboration">Creative &amp; Studio</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="nx-form-disclaimer">
+                        By requesting access, you agree to our <a href="terms.html" target="_blank">Terms</a> and acknowledge our <a href="privacy.html" target="_blank">Privacy Policy</a>. No payment is charged today.
+                    </div>
+
+                    <div class="nx-form-status" id="formStatus" aria-live="polite"></div>
+
+                    <button type="submit" class="nx-btn nx-btn--primary nx-btn--block" id="btnSubmitRequest">
+                        <span class="nx-btn__label">RESERVE EARLY ACCESS SPOT</span>
+                    </button>
+                </form>
+
+                <div class="nx-modal__success" id="modalSuccess" style="display: none;">
+                    <div class="nx-success-icon">✓</div>
+                    <h4>Spot Reserved Successfully</h4>
+                    <p id="successMsgText">Thank you for joining the Nexa AI early access cohort. We have sent a confirmation email with priority queue details.</p>
+                    <button type="button" class="nx-btn nx-btn--ghost" id="modalSuccessClose">Done</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================================================
+             CUSTOM CURSOR (Desktop only, Phase 2 only)
+             ================================================ -->
+        <div class="nx-cursor" id="nxCursor" aria-hidden="true">
+            <div class="nx-cursor__dot" id="nxCursorDot"></div>
+            <div class="nx-cursor__ring" id="nxCursorRing"></div>
+        </div>
+
+    </div><!-- /#officialSite -->
+
+    <!-- ================================================
+         SCRIPTS
+         ================================================ -->
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Phase 1: Cinematic sequence -->
+    <script src="script.js"></script>
+    <!-- Phase 2: Official site logic -->
+    <script src="nexa-site.js"></script>
+</body>
+</html>

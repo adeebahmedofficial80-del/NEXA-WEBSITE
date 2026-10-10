@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#05070A">
+    <title>Privacy Policy — Nexa AI Ecosystem</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .nx-legal {
+            min-height: 100vh;
+            background: #05070A;
+            color: rgba(255, 255, 255, 0.85);
+            padding: 120px 24px 80px;
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.7;
+        }
+        .nx-legal__container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .nx-legal__back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--nexa-cyan, #00E5FF);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            margin-bottom: 32px;
+            transition: transform 0.2s, color 0.2s;
+        }
+        .nx-legal__back-link:hover {
+            transform: translateX(-4px);
+            color: #fff;
+        }
+        .nx-legal__header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 36px;
+            margin-bottom: 48px;
+        }
+        .nx-legal__tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--nexa-cyan, #00E5FF);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .nx-legal__title {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 600;
+            color: #FFFFFF;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .nx-legal__lead {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 760px;
+            margin-bottom: 24px;
+        }
+        .nx-legal__meta-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .nx-legal__meta-item strong {
+            color: rgba(255, 255, 255, 0.9);
+            margin-left: 4px;
+        }
+        .nx-legal__toc {
+            background: rgba(0, 229, 255, 0.03);
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin-bottom: 56px;
+        }
+        .nx-legal__toc-title {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--nexa-cyan, #00E5FF);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .nx-legal__toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 10px 24px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nx-legal__toc-link {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            text-decoration: none;
+            transition: color 0.2s, transform 0.2s;
+            display: block;
+        }
+        .nx-legal__toc-link:hover {
+            color: var(--nexa-cyan, #00E5FF);
+            transform: translateX(3px);
+        }
+        .nx-legal__section {
+            margin-bottom: 48px;
+            scroll-margin-top: 100px;
+        }
+        .nx-legal__section h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .nx-legal__section-num {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--nexa-cyan, #00E5FF);
+            background: rgba(0, 229, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+        .nx-legal__section p {
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+        .nx-legal__section ul, .nx-legal__section ol {
+            margin: 16px 0 20px 20px;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 15px;
+        }
+        .nx-legal__section li {
+            margin-bottom: 10px;
+        }
+        .nx-legal__callout {
+            background: rgba(139, 92, 246, 0.06);
+            border-left: 3px solid #8B5CF6;
+            border-radius: 0 10px 10px 0;
+            padding: 16px 20px;
+            margin: 24px 0;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .nx-legal__callout--cyan {
+            background: rgba(0, 229, 255, 0.06);
+            border-left-color: #00E5FF;
+        }
+        .nx-legal__footer-nav {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simple Top Bar -->
+    <nav class="nx-nav nx-nav--scrolled" style="position:fixed; top:0; left:0; right:0; z-index:500;">
+        <div class="nx-nav__inner">
+            <a href="index.html#heroSection" class="nx-nav__logo" aria-label="Nexa AI Home">
+                <img src="assets/logo/nexa-logo-new.png" alt="Nexa AI Logo" class="nx-nav__logo-img">
+                <span class="nx-nav__logo-text">NEXA AI</span>
+            </a>
+            <div class="nx-nav__links">
+                <a href="index.html#heroSection" class="nx-nav__link">Home</a>
+                <a href="index.html#productSection" class="nx-nav__link">Product</a>
+                <a href="index.html#nexaHubSection" class="nx-nav__link">Ecosystem</a>
+                <a href="terms.html" class="nx-nav__link">Terms</a>
+            </div>
+            <div class="nx-nav__right">
+                <a href="https://nexa-the-future-ai-hub.ai.studio" target="_blank" rel="noopener noreferrer" class="nx-nav__cta" style="border:1px solid rgba(0,229,255,0.4);">Open Nexa Hub ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="nx-legal">
+        <div class="nx-legal__container">
+            <a href="index.html" class="nx-legal__back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Official Experience
+            </a>
+
+            <header class="nx-legal__header">
+                <div class="nx-legal__tag">Legal &amp; Trust Architecture</div>
+                <h1 class="nx-legal__title">Nexa AI Privacy Policy</h1>
+                <p class="nx-legal__lead">
+                    This Privacy Policy details how Nexa AI handles, isolates, and protects personal data across our physical companion hardware, the Nexa Hub command environment, cloud bridges, and third-party AI integrations.
+                </p>
+                <div class="nx-legal__meta-box">
+                    <div class="nx-legal__meta-item">Effective Date:<strong>August 15, 2026</strong></div>
+                    <div class="nx-legal__meta-item">Last Revised:<strong>October 10, 2026</strong></div>
+                    <div class="nx-legal__meta-item">Jurisdiction:<strong>India (DPDPA 2023 Compliant Framework)</strong></div>
+                    <div class="nx-legal__meta-item">Status:<strong>Pre-Launch / Early Access Preview</strong></div>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <nav class="nx-legal__toc" aria-label="Table of Contents">
+                <div class="nx-legal__toc-title">Table of Contents</div>
+                <ul class="nx-legal__toc-grid">
+                    <li><a href="#sec-scope" class="nx-legal__toc-link">1. Scope and Service Architecture</a></li>
+                    <li><a href="#sec-entity" class="nx-legal__toc-link">2. Data Fiduciary &amp; Entity Identity</a></li>
+                    <li><a href="#sec-data-collected" class="nx-legal__toc-link">3. Information Collected or Processed</a></li>
+                    <li><a href="#sec-local-vs-cloud" class="nx-legal__toc-link">4. Local Device vs. Cloud Processing</a></li>
+                    <li><a href="#sec-audio-memory" class="nx-legal__toc-link">5. Smart Audio Memory &amp; Recordings</a></li>
+                    <li><a href="#sec-ai-providers" class="nx-legal__toc-link">6. Third-Party AI Integrations</a></li>
+                    <li><a href="#sec-smart-home" class="nx-legal__toc-link">7. Smart Home (Tinxy &amp; IoT) Control</a></li>
+                    <li><a href="#sec-api-keys" class="nx-legal__toc-link">8. Customer-Provided API Keys</a></li>
+                    <li><a href="#sec-retention" class="nx-legal__toc-link">9. Data Retention &amp; Erasure</a></li>
+                    <li><a href="#sec-security" class="nx-legal__toc-link">10. Technical Security Measures</a></li>
+                    <li><a href="#sec-children" class="nx-legal__toc-link">11. Age Restrictions &amp; Minors</a></li>
+                    <li><a href="#sec-rights" class="nx-legal__toc-link">12. User Rights &amp; Legal Grounds</a></li>
+                    <li><a href="#sec-contact" class="nx-legal__toc-link">13. Grievance Redressal &amp; Inquiries</a></li>
+                </ul>
+            </nav>
+
+            <!-- Sections -->
+            <section class="nx-legal__section" id="sec-scope">
+                <h2><span class="nx-legal__section-num">01</span>Scope and Service Architecture</h2>
+                <p>
+                    This Privacy Policy applies to all personal information, telemetry, and audio signals collected or processed through the <strong>Nexa AI ecosystem</strong>, which comprises:
+                </p>
+                <ul>
+                    <li><strong>Physical Nexa Hardware:</strong> The embedded companion device (incorporating dual ESP32 microcontrollers, directional microphone arrays, audio output, and LED state indicators).</li>
+                    <li><strong>Nexa Hub:</strong> The connected web command center hosted at <code>https://nexa-the-future-ai-hub.ai.studio</code>, utilized for ecosystem orchestration, model tuning, character creation, and device pairing.</li>
+                    <li><strong>Gateway &amp; Cloud Bridges:</strong> The relay layer facilitating authenticated connectivity between physical hardware, the Nexa Hub, and user-selected external AI providers.</li>
+                    <li><strong>Nexa Official Website:</strong> This presentation and access-reservation website.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-entity">
+                <h2><span class="nx-legal__section-num">02</span>Data Fiduciary &amp; Entity Identity</h2>
+                <p>
+                    For the purposes of the Indian Digital Personal Data Protection Act (DPDPA), 2023, and applicable data protection legislation, the entity responsible for determining the purposes and means of processing personal data is:
+                </p>
+                <div class="nx-legal__callout nx-legal__callout--cyan">
+                    <strong>Entity Notice:</strong><br>
+                    <strong>Operator:</strong> [Nexa AI Technologies — Corporate Entity in Incorporation / Operation]<br>
+                    <strong>Operating Location:</strong> India<br>
+                    <strong>Official Communication:</strong> <code>support@nexa.ai</code> | <code>privacy@nexa.ai</code><br>
+                    <em>Note for Early Access: Final statutory registered entity numbers, corporate identification numbers (CIN), and registered offices will be formally published upon general commercial hardware shipping.</em>
+                </div>
+            </section>
+
+            <section class="nx-legal__section" id="sec-data-collected">
+                <h2><span class="nx-legal__section-num">03</span>Information Collected or Processed</h2>
+                <p>Nexa collects only the information necessary to provide, configure, and maintain requested services:</p>
+                <ul>
+                    <li><strong>Account &amp; Reservation Details:</strong> Name, verified email address, chosen product tier (Go, Plus, Prime), and waitlist reservation timestamps submitted through our access forms.</li>
+                    <li><strong>Device Pairing Telemetry:</strong> Hardware serial numbers, MAC addresses, firmware build revisions, and Wi-Fi pairing connection status.</li>
+                    <li><strong>Voice Queries &amp; Interactions:</strong> Spoken instructions transmitted during active listening sessions (e.g., following hotword activation or command execution).</li>
+                    <li><strong>Audio Memory Data (User-Initiated):</strong> Audio recordings, machine-generated transcripts, and semantic summaries produced strictly when the user activates the Smart Audio Memory feature.</li>
+                    <li><strong>Configuration Preferences:</strong> User-customized character prompts, system persona modes, voice speed parameters, and connected service toggles configured in the Nexa Hub.</li>
+                    <li><strong>Smart-Home Device Identifiers:</strong> Relay channel names, room identifiers, and device status states required to execute IoT commands.</li>
+                    <li><strong>Technical Logs:</strong> Server error traces, request latencies, and security firewall events.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-local-vs-cloud">
+                <h2><span class="nx-legal__section-num">04</span>Local Device vs. Cloud Processing</h2>
+                <p>
+                    A foundational architectural principle of Nexa is hybrid processing. We clearly distinguish between what runs locally and what requires cloud connectivity:
+                </p>
+                <ul>
+                    <li><strong>On-Device (Hardware):</strong> Hotword recognition, initial acoustic filtering, basic offline command handling (on supported tiers), and local LED status feedback occur locally on the physical companion. The device microphone does not stream ambient audio continuously.</li>
+                    <li><strong>Cloud Bridge &amp; Gateway:</strong> Complex natural language understanding, generative AI synthesis, high-accuracy speech-to-text transcription, and cross-application automations require cloud execution. Audio buffers are transmitted only upon hotword activation or explicit command button input.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-audio-memory">
+                <h2><span class="nx-legal__section-num">05</span>Smart Audio Memory &amp; Recordings</h2>
+                <p>
+                    The Smart Audio Memory capability is an optional, user-activated feature designed for meeting documentation, executive note-taking, and contextual recall.
+                </p>
+                <div class="nx-legal__callout">
+                    <strong>Critical Legal Notice on Third-Party Consent:</strong><br>
+                    Users activating the Smart Audio Memory feature are solely responsible for providing all legally required notices and securing all necessary consents from any participants, employees, or visitors whose voices may be captured by the Nexa microphone array, in accordance with applicable wiretapping, privacy, and recording laws in their jurisdiction.
+                </div>
+                <p>
+                    Recorded audio files and their corresponding text transcripts are stored within encrypted customer storage partitions. Users retain full self-service controls in Nexa Hub to inspect, download, or permanently purge individual audio files and indexed meeting summaries.
+                </p>
+            </section>
+
+            <section class="nx-legal__section" id="sec-ai-providers">
+                <h2><span class="nx-legal__section-num">06</span>Third-Party AI Integrations</h2>
+                <p>
+                    Nexa connects to frontier AI model providers to deliver conversational intelligence. Depending on your configuration in Nexa Hub, requests may be routed to:
+                </p>
+                <ul>
+                    <li><strong>Google Gemini (Google Cloud):</strong> Large multimodal and reasoning models.</li>
+                    <li><strong>OpenAI (GPT Models):</strong> Conversational inference and embeddings.</li>
+                    <li><strong>xAI (Grok):</strong> Conversational inference.</li>
+                    <li><strong>OpenRouter:</strong> Distributed multi-model routing.</li>
+                    <li><strong>ElevenLabs:</strong> Expressive neural voice synthesis and custom voice cloning.</li>
+                </ul>
+                <p>
+                    When an AI query is executed, the text of your query and relevant conversational context are transmitted to the selected provider to generate a response. Each third-party provider processes data under its respective commercial API terms and privacy policies. Nexa defaults to commercial enterprise API tiers that contractually prohibit the use of customer API payloads for model training.
+                </p>
+            </section>
+
+            <section class="nx-legal__section" id="sec-smart-home">
+                <h2><span class="nx-legal__section-num">07</span>Smart Home (Tinxy &amp; IoT) Control</h2>
+                <p>
+                    When you link compatible smart-home hardware (such as Tinxy Wi-Fi switches, smart relays, or lighting bridges), Nexa processes device authentication tokens and relay state values to execute spoken commands (e.g., "Nexa, turn on the studio lights").
+                </p>
+                <p>
+                    Nexa does not monitor or log appliance power usage beyond what is required to verify command execution and display status indicators in the Nexa Hub.
+                </p>
+            </section>
+
+            <section class="nx-legal__section" id="sec-api-keys">
+                <h2><span class="nx-legal__section-num">08</span>Customer-Provided API Keys</h2>
+                <p>
+                    In "Bring Your Own Key" (BYOK) configurations, users supply their own private API keys for Gemini, OpenAI, or ElevenLabs within Nexa Hub.
+                </p>
+                <ul>
+                    <li>API keys are never stored in plaintext on physical ESP32 companion hardware.</li>
+                    <li>Keys are stored using AES-256 encryption at rest in our secure database enclave.</li>
+                    <li>Keys are decrypted ephemerally in memory solely to authenticate authorized outbound requests to provider endpoints.</li>
+                    <li>Deleting a key from the Nexa Hub immediately purges it from our active database.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-retention">
+                <h2><span class="nx-legal__section-num">09</span>Data Retention &amp; Erasure</h2>
+                <p>
+                    Nexa maintains strict data retention minimization standards:
+                </p>
+                <ul>
+                    <li><strong>Ephemeral Voice Commands:</strong> Transient audio buffers used for simple conversational commands are discarded immediately after transcription and response synthesis.</li>
+                    <li><strong>Audio Memory:</strong> Retained until manually deleted by the user or until the expiration of customer-configured retention windows (e.g., 30, 90, or 365 days).</li>
+                    <li><strong>Waitlist &amp; Early Access Data:</strong> Retained throughout the preview period and until hardware fulfillment or account cancellation.</li>
+                    <li><strong>Account Deletion:</strong> Initiating account deletion via Nexa Hub triggers permanent erasure of linked tokens, stored voice presets, transcripts, and device pairings within 30 days.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-security">
+                <h2><span class="nx-legal__section-num">10</span>Technical Security Measures</h2>
+                <p>
+                    We implement defensive security controls designed to safeguard communications across all tiers:
+                </p>
+                <ul>
+                    <li>TLS 1.3 / HTTPS encryption in transit across all web, API, and WebSocket channels.</li>
+                    <li>Strict Content Security Policy (CSP), HTTP Strict Transport Security (HSTS), and frame-ancestors restrictions against clickjacking.</li>
+                    <li>Secure token-based device authentication (HMAC-SHA256) preventing unauthorized pairing.</li>
+                    <li>Role-based access controls and rate limiting to defend against brute-force and credential stuffing attacks.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-children">
+                <h2><span class="nx-legal__section-num">11</span>Age Restrictions &amp; Minors</h2>
+                <p>
+                    The Nexa AI companion and Nexa Hub are intended for individuals who have attained the age of majority in their jurisdiction (18 years of age in India). Nexa does not knowingly process personal data of children without verifiable parental or guardian consent. If we learn that personal data of a minor has been collected without parental consent, we will promptly delete such information.
+                </p>
+            </section>
+
+            <section class="nx-legal__section" id="sec-rights">
+                <h2><span class="nx-legal__section-num">12</span>User Rights &amp; Legal Grounds</h2>
+                <p>
+                    Under the Indian Digital Personal Data Protection Act (DPDPA 2023) and applicable global frameworks, you possess the right to:
+                </p>
+                <ul>
+                    <li><strong>Right to Access:</strong> Request a summary of personal data being processed and a list of entities with whom it has been shared.</li>
+                    <li><strong>Right to Correction &amp; Erasure:</strong> Rectify inaccurate personal data or demand the complete erasure of non-statutory records.</li>
+                    <li><strong>Right of Grievance Redressal:</strong> Submit grievances regarding data handling to our designated Grievance Officer.</li>
+                    <li><strong>Right to Nominate:</strong> Nominate another individual to exercise data rights in the event of incapacity.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-contact">
+                <h2><span class="nx-legal__section-num">13</span>Grievance Redressal &amp; Inquiries</h2>
+                <p>
+                    For privacy inquiries, rights requests, or statutory grievances under the DPDPA, please contact our designated Grievance Team:
+                </p>
+                <div class="nx-legal__callout nx-legal__callout--cyan">
+                    <strong>Designated Grievance Officer:</strong> [Privacy &amp; Compliance Office]<br>
+                    <strong>Electronic Mail:</strong> <code>grievance@nexa.ai</code><br>
+                    <strong>Support &amp; Data Subject Inquiries:</strong> <code>privacy@nexa.ai</code><br>
+                    <strong>Response Timeline:</strong> Acknowledged within 48 hours; substantive resolution within 30 days.
+                </div>
+            </section>
+
+            <div class="nx-legal__footer-nav">
+                <a href="index.html" class="nx-btn nx-btn--ghost">← Back to Nexa AI</a>
+                <a href="terms.html" class="nx-btn nx-btn--primary">Read Terms &amp; Conditions →</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="nx-footer">
+        <div class="nx-footer__inner">
+            <div class="nx-footer__brand">
+                <img src="assets/logo/nexa-logo-new.png" alt="Nexa AI Logo" class="nx-footer__logo">
+                <span class="nx-footer__brand-text">NEXA AI</span>
+                <span class="nx-footer__sep">|</span>
+                <span class="nx-footer__tagline">Intelligence Around You</span>
+            </div>
+            <nav class="nx-footer__nav" aria-label="Footer navigation">
+                <a href="index.html#productSection">Product</a>
+                <a href="index.html#nexaHubSection">Ecosystem</a>
+                <a href="https://nexa-the-future-ai-hub.ai.studio" target="_blank" rel="noopener noreferrer">Nexa Hub ↗</a>
+                <a href="privacy.html" style="color:var(--nexa-cyan, #00E5FF);">Privacy Policy</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
+            </nav>
+            <div class="nx-footer__legal">
+                <span>&copy; 2026 Nexa AI. All rights reserved.</span>
+                <span class="nx-footer__status">
+                    <span class="nx-status-dot nx-status-dot--sm"></span>
+                    System Operational
+                </span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

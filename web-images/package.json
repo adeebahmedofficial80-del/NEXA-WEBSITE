@@ -1,0 +1,26 @@
+{
+  "name": "nexa-ai-cinematic-experience",
+  "version": "1.0.0",
+  "description": "Nexa AI Cinematic Scroll Experience — 2,758 Frame Canvas Sequence with GSAP & ScrollTrigger",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "node server.js"
+  },
+  "keywords": [
+    "nexa-ai",
+    "gsap",
+    "scrolltrigger",
+    "html5-canvas",
+    "image-sequence",
+    "cinematic",
+    "performance-engineering"
+  ],
+  "author": "Nexa AI Engineering",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
