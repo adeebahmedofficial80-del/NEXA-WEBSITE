@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#05070A">
+    <title>Terms &amp; Conditions — Nexa AI Ecosystem</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .nx-legal {
+            min-height: 100vh;
+            background: #05070A;
+            color: rgba(255, 255, 255, 0.85);
+            padding: 120px 24px 80px;
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.7;
+        }
+        .nx-legal__container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .nx-legal__back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--nexa-cyan, #00E5FF);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            margin-bottom: 32px;
+            transition: transform 0.2s, color 0.2s;
+        }
+        .nx-legal__back-link:hover {
+            transform: translateX(-4px);
+            color: #fff;
+        }
+        .nx-legal__header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 36px;
+            margin-bottom: 48px;
+        }
+        .nx-legal__tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--nexa-cyan, #00E5FF);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .nx-legal__title {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 600;
+            color: #FFFFFF;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .nx-legal__lead {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 760px;
+            margin-bottom: 24px;
+        }
+        .nx-legal__meta-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .nx-legal__meta-item strong {
+            color: rgba(255, 255, 255, 0.9);
+            margin-left: 4px;
+        }
+        .nx-legal__toc {
+            background: rgba(0, 229, 255, 0.03);
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin-bottom: 56px;
+        }
+        .nx-legal__toc-title {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--nexa-cyan, #00E5FF);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .nx-legal__toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 10px 24px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nx-legal__toc-link {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            text-decoration: none;
+            transition: color 0.2s, transform 0.2s;
+            display: block;
+        }
+        .nx-legal__toc-link:hover {
+            color: var(--nexa-cyan, #00E5FF);
+            transform: translateX(3px);
+        }
+        .nx-legal__section {
+            margin-bottom: 48px;
+            scroll-margin-top: 100px;
+        }
+        .nx-legal__section h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .nx-legal__section-num {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--nexa-cyan, #00E5FF);
+            background: rgba(0, 229, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+        .nx-legal__section p {
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+        .nx-legal__section ul, .nx-legal__section ol {
+            margin: 16px 0 20px 20px;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 15px;
+        }
+        .nx-legal__section li {
+            margin-bottom: 10px;
+        }
+        .nx-legal__callout {
+            background: rgba(139, 92, 246, 0.06);
+            border-left: 3px solid #8B5CF6;
+            border-radius: 0 10px 10px 0;
+            padding: 16px 20px;
+            margin: 24px 0;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .nx-legal__callout--cyan {
+            background: rgba(0, 229, 255, 0.06);
+            border-left-color: #00E5FF;
+        }
+        .nx-legal__footer-nav {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simple Top Bar -->
+    <nav class="nx-nav nx-nav--scrolled" style="position:fixed; top:0; left:0; right:0; z-index:500;">
+        <div class="nx-nav__inner">
+            <a href="index.html#heroSection" class="nx-nav__logo" aria-label="Nexa AI Home">
+                <img src="assets/logo/nexa-logo-new.png" alt="Nexa AI Logo" class="nx-nav__logo-img">
+                <span class="nx-nav__logo-text">NEXA AI</span>
+            </a>
+            <div class="nx-nav__links">
+                <a href="index.html#heroSection" class="nx-nav__link">Home</a>
+                <a href="index.html#productSection" class="nx-nav__link">Product</a>
+                <a href="index.html#nexaHubSection" class="nx-nav__link">Ecosystem</a>
+                <a href="privacy.html" class="nx-nav__link">Privacy</a>
+            </div>
+            <div class="nx-nav__right">
+                <a href="https://nexa-the-future-ai-hub.ai.studio" target="_blank" rel="noopener noreferrer" class="nx-nav__cta" style="border:1px solid rgba(0,229,255,0.4);">Open Nexa Hub ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="nx-legal">
+        <div class="nx-legal__container">
+            <a href="index.html" class="nx-legal__back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Official Experience
+            </a>
+
+            <header class="nx-legal__header">
+                <div class="nx-legal__tag">Master Service Charter</div>
+                <h1 class="nx-legal__title">Terms &amp; Conditions</h1>
+                <p class="nx-legal__lead">
+                    These Terms govern access to the Nexa AI website, pre-release reservations, usage of the Nexa Hub software platform, and interaction with physical Nexa companion hardware.
+                </p>
+                <div class="nx-legal__meta-box">
+                    <div class="nx-legal__meta-item">Effective Date:<strong>August 15, 2026</strong></div>
+                    <div class="nx-legal__meta-item">Last Revised:<strong>October 10, 2026</strong></div>
+                    <div class="nx-legal__meta-item">Governing Law:<strong>Laws of India (IT Act 2000 &amp; Consumer Protection Act 2019)</strong></div>
+                    <div class="nx-legal__meta-item">Status:<strong>Pre-Launch / Developer &amp; Early Access Preview</strong></div>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <nav class="nx-legal__toc" aria-label="Table of Contents">
+                <div class="nx-legal__toc-title">Table of Contents</div>
+                <ul class="nx-legal__toc-grid">
+                    <li><a href="#sec-acceptance" class="nx-legal__toc-link">1. Acceptance &amp; Scope of Agreement</a></li>
+                    <li><a href="#sec-preview-status" class="nx-legal__toc-link">2. Early Access &amp; Preview Nature</a></li>
+                    <li><a href="#sec-ecosystem" class="nx-legal__toc-link">3. Nexa Ecosystem Description</a></li>
+                    <li><a href="#sec-accounts" class="nx-legal__toc-link">4. User Accounts &amp; Device Pairing</a></li>
+                    <li><a href="#sec-api-keys" class="nx-legal__toc-link">5. Customer API Keys &amp; Provider Fees</a></li>
+                    <li><a href="#sec-ai-outputs" class="nx-legal__toc-link">6. Nature of AI Outputs &amp; Disclaimers</a></li>
+                    <li><a href="#sec-audio-recording" class="nx-legal__toc-link">7. Audio Recording &amp; Consent Rules</a></li>
+                    <li><a href="#sec-smart-home" class="nx-legal__toc-link">8. Smart-Home &amp; Environmental Safety</a></li>
+                    <li><a href="#sec-pricing" class="nx-legal__toc-link">9. Pricing &amp; Reservation Policy</a></li>
+                    <li><a href="#sec-ip" class="nx-legal__toc-link">10. Intellectual Property Rights</a></li>
+                    <li><a href="#sec-acceptable-use" class="nx-legal__toc-link">11. Acceptable Use &amp; Prohibitions</a></li>
+                    <li><a href="#sec-termination" class="nx-legal__toc-link">12. Suspension, Termination &amp; Changes</a></li>
+                    <li><a href="#sec-liability" class="nx-legal__toc-link">13. Limitation of Liability &amp; Disputes</a></li>
+                </ul>
+            </nav>
+
+            <!-- Sections -->
+            <section class="nx-legal__section" id="sec-acceptance">
+                <h2><span class="nx-legal__section-num">01</span>Acceptance &amp; Scope of Agreement</h2>
+                <p>
+                    By browsing this website, requesting early access reservation, accessing the Nexa Hub, or connecting compatible Nexa companion hardware, you agree to be bound by these Terms and Conditions and our Privacy Policy.
+                </p>
+                <p>
+                    If you do not agree to these Terms, you must not submit early access requests or connect to the Nexa Hub services. Mere visitation of this website does not create a binding financial commitment or hardware purchase agreement.
+                </p>
+            </section>
+
+            <section class="nx-legal__section" id="sec-preview-status">
+                <h2><span class="nx-legal__section-num">02</span>Early Access &amp; Preview Nature</h2>
+                <div class="nx-legal__callout nx-legal__callout--cyan">
+                    <strong>Pre-Release Product Notice:</strong><br>
+                    Nexa AI companion hardware and the Nexa Hub software platform are currently provided as early access, preview, and prototype technology. Certain features (including local edge inference, extended multi-agent workflows, and specific third-party IoT bridges) may undergo architectural adjustments prior to general market commercialization.
+                </div>
+                <p>
+                    We provide access to developer previews and early access software on an "as-available" basis to validate community feedback, hardware reliability, and conversational accuracy.
+                </p>
+            </section>
+
+            <section class="nx-legal__section" id="sec-ecosystem">
+                <h2><span class="nx-legal__section-num">03</span>Nexa Ecosystem Description</h2>
+                <p>
+                    The Nexa service ecosystem consists of:
+                </p>
+                <ul>
+                    <li><strong>Hardware Unit:</strong> An intelligent ambient hardware companion featuring acoustic directional microphones, integrated audio response, LED dynamic indicator rings, and ESP32 connectivity.</li>
+                    <li><strong>Nexa Hub Web Environment:</strong> The central workspace located at <code>https://nexa-the-future-ai-hub.ai.studio</code> for managing device pairing, voice personality models, automation routines, and data vaults.</li>
+                    <li><strong>Cloud Bridges &amp; Gateway:</strong> Secure routing gateways facilitating authenticated requests to frontier AI models and IoT controllers.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-accounts">
+                <h2><span class="nx-legal__section-num">04</span>User Accounts &amp; Device Pairing</h2>
+                <p>
+                    To configure a Nexa companion or utilize the Nexa Hub, you may be required to create an account and pair your hardware using secure Wi-Fi credentials. You agree to:
+                </p>
+                <ul>
+                    <li>Provide accurate, current contact information.</li>
+                    <li>Safeguard your authentication credentials and pair codes.</li>
+                    <li>Promptly notify Nexa support in the event of unauthorized access to your device or Hub account.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-api-keys">
+                <h2><span class="nx-legal__section-num">05</span>Customer API Keys &amp; Provider Fees</h2>
+                <p>
+                    When using Nexa in Bring-Your-Own-Key (BYOK) mode, you supply your private API keys for selected third-party intelligence providers (such as Google Gemini, OpenAI, or ElevenLabs).
+                </p>
+                <ul>
+                    <li>You are solely responsible for all API token usage fees, billing terms, rate limits, and compliance with the terms of service of each respective AI provider.</li>
+                    <li>Nexa does not guarantee the continuous availability, pricing, or uptime of third-party model endpoints.</li>
+                    <li>You acknowledge that excessive or automated voice synthesis or transcription queries may consume your third-party API quotas.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-ai-outputs">
+                <h2><span class="nx-legal__section-num">06</span>Nature of AI Outputs &amp; Disclaimers</h2>
+                <div class="nx-legal__callout">
+                    <strong>Critical AI Disclaimer:</strong><br>
+                    Responses generated by Nexa AI are probabilistic outputs generated by machine learning models. Nexa outputs may occasionally be inaccurate, incomplete, or out of date. Nexa is NOT certified as a medical, legal, financial, architectural, or life-safety emergency system. You must independently evaluate and verify all critical information prior to relying upon it.
+                </div>
+            </section>
+
+            <section class="nx-legal__section" id="sec-audio-recording">
+                <h2><span class="nx-legal__section-num">07</span>Audio Recording &amp; Consent Rules</h2>
+                <p>
+                    When utilizing the Smart Audio Memory feature to capture meetings, conversations, or lectures, you represent and warrant that:
+                </p>
+                <ul>
+                    <li>You have obtained all legally required prior consents and permissions from all individuals whose speech or likeness is captured by the Nexa microphone array.</li>
+                    <li>You will comply with all applicable local, state, and national laws regarding wiretapping, eavesdropping, and consent requirements (such as all-party or one-party consent requirements).</li>
+                    <li>You will not place Nexa in environments where individuals possess a reasonable expectation of privacy (e.g., restrooms, medical clinics, confidential mediation sessions) without explicit consent.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-smart-home">
+                <h2><span class="nx-legal__section-num">08</span>Smart-Home &amp; Environmental Safety</h2>
+                <p>
+                    Nexa enables spoken automation of compatible home and office appliances (e.g., Tinxy relays, smart lighting, thermal controls). You acknowledge that:
+                </p>
+                <ul>
+                    <li>Actuator commands rely upon Wi-Fi local connectivity, cloud internet uptime, and third-party appliance firmware.</li>
+                    <li>You must never connect Nexa to life-critical equipment, medical oxygen regulators, industrial machinery, or heat-generating appliances (such as space heaters or kitchen ovens) where unintentional activation could create a fire hazard.</li>
+                    <li>Nexa disclaims liability for damages resulting from appliance failure, power surges, or delayed command execution.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-pricing">
+                <h2><span class="nx-legal__section-num">09</span>Pricing &amp; Reservation Policy</h2>
+                <p>
+                    Target pricing indicated on this website (Nexa Go: ₹3,499; Nexa Plus: ₹7,999; Nexa Prime: ₹15,999) represents proposed indicative target consumer pricing for India.
+                </p>
+                <ul>
+                    <li>Prices are subject to final supply chain, manufacturing, and regulatory compliance validation prior to formal release.</li>
+                    <li>Submitting a request on our "Request Access" form registers your interest on our priority queue and does not constitute a completed commercial charge.</li>
+                    <li>Formal payment, shipping addresses, and commercial invoices will be collected through an authorized, certified payment gateway upon retail launch.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-ip">
+                <h2><span class="nx-legal__section-num">10</span>Intellectual Property Rights</h2>
+                <p>
+                    The Nexa AI brand, trademarks, custom hardware chassis aesthetics, firmware code, web application architecture, and interface design are the exclusive property of Nexa AI and its licensors.
+                </p>
+                <p>
+                    You retain ownership of your user-submitted prompts, uploaded documents, private audio recordings, and resulting output summaries produced through your legitimate use of the service.
+                </p>
+            </section>
+
+            <section class="nx-legal__section" id="sec-acceptable-use">
+                <h2><span class="nx-legal__section-num">11</span>Acceptable Use &amp; Prohibitions</h2>
+                <p>You agree that you will NOT:</p>
+                <ul>
+                    <li>Decompile, reverse-engineer, or extract cryptographic keys from the Nexa hardware or gateway endpoints.</li>
+                    <li>Use the device or voice capabilities to create deceptive deepfakes, harass individuals, or commit fraud.</li>
+                    <li>Interfere with or launch denial-of-service attacks against Nexa gateway infrastructure.</li>
+                    <li>Transmit malicious scripts, worms, or unauthorized bot traffic through the Nexa Hub or access forms.</li>
+                </ul>
+            </section>
+
+            <section class="nx-legal__section" id="sec-termination">
+                <h2><span class="nx-legal__section-num">12</span>Suspension, Termination &amp; Changes</h2>
+                <p>
+                    We reserve the right to suspend or terminate access to the Nexa Hub or connected gateway services for accounts that violate these Terms, abuse model quotas, or engage in unlawful activities.
+                </p>
+                <p>
+                    We may update these Terms periodically to reflect statutory amendments or technical advances. Continued use following published revisions constitutes acceptance of the modified Terms.
+                </p>
+            </section>
+
+            <section class="nx-legal__section" id="sec-liability">
+                <h2><span class="nx-legal__section-num">13</span>Limitation of Liability &amp; Disputes</h2>
+                <p>
+                    To the maximum extent permitted by applicable law, Nexa AI and its directors, engineers, and suppliers shall not be liable for indirect, incidental, consequential, or punitive damages arising from the use or inability to use the device, model hallucinations, or network interruptions.
+                </p>
+                <p>
+                    These Terms are governed by the laws of India. Any disputes arising out of or related to these Terms shall be subject to the exclusive jurisdiction of the competent courts in India, subject to mandatory statutory consumer dispute resolution provisions.
+                </p>
+            </section>
+
+            <div class="nx-legal__footer-nav">
+                <a href="index.html" class="nx-btn nx-btn--ghost">← Back to Nexa AI</a>
+                <a href="privacy.html" class="nx-btn nx-btn--primary">Read Privacy Policy →</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="nx-footer">
+        <div class="nx-footer__inner">
+            <div class="nx-footer__brand">
+                <img src="assets/logo/nexa-logo-new.png" alt="Nexa AI Logo" class="nx-footer__logo">
+                <span class="nx-footer__brand-text">NEXA AI</span>
+                <span class="nx-footer__sep">|</span>
+                <span class="nx-footer__tagline">Intelligence Around You</span>
+            </div>
+            <nav class="nx-footer__nav" aria-label="Footer navigation">
+                <a href="index.html#productSection">Product</a>
+                <a href="index.html#nexaHubSection">Ecosystem</a>
+                <a href="https://nexa-the-future-ai-hub.ai.studio" target="_blank" rel="noopener noreferrer">Nexa Hub ↗</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html" style="color:var(--nexa-cyan, #00E5FF);">Terms &amp; Conditions</a>
+            </nav>
+            <div class="nx-footer__legal">
+                <span>&copy; 2026 Nexa AI. All rights reserved.</span>
+                <span class="nx-footer__status">
+                    <span class="nx-status-dot nx-status-dot--sm"></span>
+                    System Operational
+                </span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
